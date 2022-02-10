@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.git-logo {
+    margin-left: 80px !important;
+}
+
+.input-row {
+    margin-top: 50px !important;
+}
+
+.card-list-icons {
+    margin-right: 10px;
+}
+
+.card-link {
+    color: #03a9f4 !important;
+    transition: all 0.2s;
+}
+
+.card-link:hover {
+    color: #0288d1 !important;
+}

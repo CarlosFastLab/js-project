@@ -21,6 +21,7 @@ main {
 }
 
 .card-link {
+    margin-left: 30px;
     color: #03a9f4 !important;
     transition: all 0.2s;
 }

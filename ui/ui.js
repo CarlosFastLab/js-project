@@ -62,7 +62,7 @@ class UI {
   };
 
   //Displaying "User not found" when no results from search
-  showUserNotFound(user){
+  showUserNotFound(){
     this.profileCtr.innerHTML = `<div class="col s5 push-s3">
     <div class="card">
       <div class="card-content center">

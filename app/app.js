@@ -10,7 +10,7 @@ function searchUser(e) {
 
   http.get(inputElValue)
     .then((data) => {
-      if(data.message =="Not Found" ? ui.showUserNotFound(data) : ui.showProfile(data));
+      if(data.message =="Not Found" ? ui.showUserNotFound() : ui.showProfile(data));
     });
     e.preventDefault();  
   };

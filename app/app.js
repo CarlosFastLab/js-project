@@ -10,11 +10,10 @@ function searchUser(e) {
 
   http.get(inputElValue)
     .then((data) => {
-      ui.showProfile(data);
+      if(data.message =="Not Found" ? ui.showUserNotFound() : ui.showProfile(data));
     });
-
-  e.preventDefault();
-};
+    e.preventDefault();  
+  };
 
 /**
  * Listening to 'search' button click and calling searchUser function

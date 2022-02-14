@@ -1,12 +1,8 @@
 import Http from "../http/http.js";
 const http = new Http();
 
-/**
- * Listening to 'search' button click and searching for user
- * based on user input value
- */
-const searchBtnEl = document.getElementById('submit-search')
-searchBtnEl.addEventListener('click', (e) => {
+// Getting user input value and providing to http's module get function
+function searchUser(e) {
   // Getting search input element value
   const inputElValue = document.getElementById('search-input').value;
 
@@ -15,6 +11,12 @@ searchBtnEl.addEventListener('click', (e) => {
       console.log(data);
     });
 
-  e.preventDefault();
-})
+  e.preventDefault()
+};
+
+/**
+ * Listening to 'search' button click and calling searchUser function
+ */
+const searchBtnEl = document.getElementById('submit-search')
+searchBtnEl.addEventListener('click', searchUser)
 

@@ -37,7 +37,7 @@ class UI {
                 </li>
                 <li class="collection-item">
                   <i class="card-list-icons tiny material-icons">date_range</i>
-                  Member since ${this.handleDate(user)}
+                  Member since: ${this.handleDate(user)}
                 </li>
                 <li class="collection-item">
                   <i class="card-list-icons tiny material-icons">code</i>
@@ -60,6 +60,18 @@ class UI {
       </div>
     `
   };
+
+  //Displaying "User not found" when no results from search
+  showUserNotFound(user){
+    this.profileCtr.innerHTML = `<div class="col s5 push-s3">
+    <div class="card">
+      <div class="card-content center">
+            <i class="card-list-icons large material-icons" >sentiment_dissatisfied</i>
+            <ul><i class="collection-item">User not found! Please, try again.</i></ul>
+      </div>
+    </div>`
+  };
+
 };
 
 export default UI;

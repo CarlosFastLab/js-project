@@ -67,14 +67,44 @@ class UI {
 
   // Displaying "User not found" when no results from search
   showUserNotFound() {
-    this.profileCtr.innerHTML = `<div class="col s5 push-s3">
-    <div class="card">
-      <div class="card-content center">
-            <i class="card-list-icons large material-icons" >sentiment_dissatisfied</i>
+    this.profileCtr.innerHTML = `
+    <div class="col s5 push-s3">
+      <div class="card">
+        <div class="card-content center">
+          <i class="card-list-icons large material-icons">sentiment_dissatisfied</i>
             <ul><i class="collection-item">User not found! Please, try again.</i></ul>
       </div>
     </div>`
   };
+
+  // Rendering a Loading Spinner, to be used while there are ongoing requests
+  showLoader() {
+    this.profileCtr.innerHTML = `
+      <div class="loader-ctr col valign-wrapper" style="width:92%;position: relative;">
+        <div class="valign center-block">
+          <div class="row">
+            <div class="col">
+              <div class="lds-ripple"><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+      </div
+    `
+  }
+
+  // Displaying an error message in case something goes wrong with the request
+  showErrorMessage() {
+    this.profileCtr.innerHTML = `
+    <div class="col s5 push-s3">
+      <div class="card">
+        <div class="card-content center">
+          <i class="red-text text-darken-1 card-list-icons large material-icons">priority_high
+          </i>
+            <ul><i class="collection-item">Something went wrong. Please, try again later.</i></ul>
+      </div>
+    </div>
+    `
+  }
 
 };
 

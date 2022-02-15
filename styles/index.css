@@ -9,7 +9,7 @@ main {
 }
 
 .git-logo {
-    margin-left: 80px !important;
+    margin: 0 20px 0 80px !important;
 }
 
 .input-row {

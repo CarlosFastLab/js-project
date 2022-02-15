@@ -9,6 +9,10 @@ class UI {
     return new Intl.DateTimeFormat('pt-BR').format(date);
   };
 
+  /**
+   * Handling location in case github user did not provide a location
+   * to the platform, avoiding a "null" string
+   */
   handleLocation(user) {
     if (!user.location || user.location === null) {
       return 'No location provided';
@@ -61,8 +65,8 @@ class UI {
     `
   };
 
-  //Displaying "User not found" when no results from search
-  showUserNotFound(){
+  // Displaying "User not found" when no results from search
+  showUserNotFound() {
     this.profileCtr.innerHTML = `<div class="col s5 push-s3">
     <div class="card">
       <div class="card-content center">

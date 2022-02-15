@@ -1,0 +1,13 @@
+.card-list-icons {
+  margin-right: 10px;
+}
+
+.card-link {
+  margin-left: 30px;
+  color: #03a9f4 !important;
+  transition: all 0.2s;
+}
+
+.card-link:hover {
+  color: #0288d1 !important;
+}

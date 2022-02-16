@@ -1,6 +1,7 @@
 class UI {
   constructor() {
     this.profileCtr = document.getElementById('profile-container');
+    this.historyCtr = document.getElementById('search-history');
   };
 
   // Handling user's created_at date to return a pt-BR date format
@@ -76,6 +77,21 @@ class UI {
     </div>`
   };
 
+  showSearchHistory(valor){
+    this.historyCtr.innerHTML = `
+      <div id="search-history">
+        <span class="card-title">Last search</span>
+        <ul class="collection left-align">
+          <li class="collection-item">
+            <i class="card-list-icons tiny material-icons">history</i>
+            ${valor}
+          </li>
+        </ul>
+      </div>`
+  };
+ 
+
 };
 
 export default UI;
+

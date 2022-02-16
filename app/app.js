@@ -11,6 +11,9 @@ function searchUser(e) {
   http.get(inputElValue)
     .then((data) => {
       if (data.message == "Not Found" ? ui.showUserNotFound() : ui.showProfile(data));
+        //Persist searched string in LocalStorage
+        localStorage.setItem(Date.now(), inputElValue);
+        searchHistory();
     });
   e.preventDefault();
 };
@@ -20,3 +23,15 @@ function searchUser(e) {
  */
 const searchBtnEl = document.getElementById('submit-search');
 searchBtnEl.addEventListener('click', searchUser);
+
+// Listening 'search'button click to persist search string in LocalStorage
+searchBtnEl.addEventListener('click', persistSearch) ;
+
+//
+function searchHistory(){
+  for ( let i = 0, len = localStorage.length; i < len; i++ ) {
+    let key = localStorage.key(i);
+    let valor = localStorage.getItem(key);
+    ui.showSearchHistory(valor)
+  }
+}

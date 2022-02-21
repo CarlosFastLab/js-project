@@ -58,6 +58,17 @@
             <!-- This div will be populated with user's request to github API -->
             <div class="row" id="profile-container">
             </div>
+
+            <!-- This div is initialized with display set to none. 
+            After we have something in localStorage we programatically change its style -->
+            <div class="row" id="search-history-container" style="display: none;">
+                <div class="col s5 push-s3" id="search-history">
+                    <h5 class="card-title">Last searches</h5>
+                    <!-- This ul will be populated with <li>s receiving localStorage values -->
+                    <ul class="collection left-align" id="search-history-list">
+                    </ul>
+                </div>
+            </div>
         </div>
     </main>
 

@@ -1,24 +1,13 @@
+import { handleDate, handleLocation } from "../helpers/helpers.js";
+
+import Storage from "../storage/storage.js";
+const storage = new Storage();
+
 class UI {
   constructor() {
     this.profileCtr = document.getElementById('profile-container');
-  };
-
-  // Handling user's created_at date to return a pt-BR date format
-  handleDate(user) {
-    const date = new Date(user.created_at);
-    return new Intl.DateTimeFormat('pt-BR').format(date);
-  };
-
-  /**
-   * Handling location in case github user did not provide a location
-   * to the platform, avoiding a "null" string
-   */
-  handleLocation(user) {
-    if (!user.location || user.location === null) {
-      return 'No location provided';
-    } else {
-      return user.location;
-    };
+    this.searchHistoryList = document.getElementById('search-history-list');
+    this.searchInputEl = document.getElementById('search-input');
   };
 
   // Displaying resulting profile in UI
@@ -37,11 +26,11 @@ class UI {
               <ul class="collection left-align">
                 <li class="collection-item">
                   <i class="card-list-icons tiny material-icons">place</i>
-                  Location: ${this.handleLocation(user)}
+                  Location: ${handleLocation(user)}
                 </li>
                 <li class="collection-item">
                   <i class="card-list-icons tiny material-icons">date_range</i>
-                  Member since: ${this.handleDate(user)}
+                  Member since: ${handleDate(user)}
                 </li>
                 <li class="collection-item">
                   <i class="card-list-icons tiny material-icons">code</i>
@@ -62,19 +51,20 @@ class UI {
           </div>
         </div>
       </div>
-    `
+    `;
   };
 
   // Displaying "User not found" when no results from search
   showUserNotFound() {
     this.profileCtr.innerHTML = `
-    <div class="col s5 push-s3">
-      <div class="card">
-        <div class="card-content center">
-          <i class="card-list-icons large material-icons">sentiment_dissatisfied</i>
-            <ul><i class="collection-item">User not found! Please, try again.</i></ul>
+      <div class="col s5 push-s3">
+        <div class="card">
+          <div class="card-content center">
+            <i class="card-list-icons large material-icons">sentiment_dissatisfied</i>
+              <ul><i class="collection-item">User not found! Please, try again.</i></ul>
+        </div>
       </div>
-    </div>`
+    `;
   };
 
   // Rendering a Loading Spinner, to be used while there are ongoing requests
@@ -89,23 +79,57 @@ class UI {
           </div>
         </div>
       </div
-    `
-  }
+    `;
+  };
 
   // Displaying an error message in case something goes wrong with the request
   showErrorMessage() {
     this.profileCtr.innerHTML = `
-    <div class="col s5 push-s3">
-      <div class="card">
-        <div class="card-content center">
-          <i class="red-text text-darken-1 card-list-icons large material-icons">priority_high
-          </i>
-            <ul><i class="collection-item">Something went wrong. Please, try again later.</i></ul>
+      <div class="col s5 push-s3">
+        <div class="card">
+          <div class="card-content center">
+            <i class="red-text text-darken-1 card-list-icons large material-icons">priority_high
+            </i>
+              <ul><i class="collection-item">Something went wrong. Please, try again later.</i></ul>
+        </div>
       </div>
-    </div>
-    `
-  }
+    `;
+  };
 
+  // Displaying user search history
+  showSearchHistory() {
+    /**
+     * We clear the list first at each new execution,
+     * avoiding repopulating the list with previous replicated results in our upcoming forEach loop.
+     */
+    this.searchHistoryList.innerHTML = '';
+
+    // We get the information needed from localStorage(history of users previously searched).
+    const usersHistory = storage.getUserSeachHistory();
+
+    // We get the search-history-container div so we can change its display to block afterwards.
+    const searchHistoryCtr = document.getElementById('search-history-container');
+
+    if (usersHistory.length !== 0) {
+      searchHistoryCtr.style.display = 'block';
+
+      usersHistory.forEach(user => {
+        this.searchHistoryList.innerHTML += `
+          <li class="collection-item">
+            <a class="search-history-list-item valign-wrapper" href="#">
+              <i class="tiny material-icons left">history</i>
+              ${user}
+            </a>
+          </li>
+        `
+      });
+    };
+  };
+
+  // used to clear input value after a search
+  clearInputValue() {
+    this.searchInputEl.value = '';
+  };
 };
 
 export default UI;

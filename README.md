@@ -30,6 +30,6 @@ When a users clicks a previous search in their search history, we issue another 
     * Small code refactoring;
     * Error handling for bad responses;
     * Insertion of a loading indicator;
-* 20/04:
+* 20/02:
     * Creation of LocalStorage class and implementation;
     * Small fixes.

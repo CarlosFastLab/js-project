@@ -4,7 +4,7 @@ It originated as a study and an experiment for our Individual Development Planni
 This project is a classic Github User Search, in which we tried to use basic and advanced JavaScript features and concepts, as well as different approaches in terms of syntax to reach similar goals.
 
 ### How to run
-Ideally, we suggest you tu use a local server to run this app.
+Ideally, we suggest you to use a local server to run this app.
 A good option is Visual Studio Code's LiveServer.
 
 ### Architecture approach

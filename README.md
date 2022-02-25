@@ -3,6 +3,10 @@ This project is the result of a colaboration between @CarlosFastLab and @deborac
 It originated as a study and an experiment for our Individual Development Plannings, as an initiative from Instituto Atlântico.
 This project is a classic Github User Search, in which we tried to use basic and advanced JavaScript features and concepts, as well as different approaches in terms of syntax to reach similar goals.
 
+### How to run
+Ideally, we suggest you tu use a local server to run this app.
+A good option is Visual Studio Code's LiveServer.
+
 ### Architecture approach
 The central and dynamic points of the application are a card, which is rendered with a Github user's data, based on a search, and a search history listing, populated with data persisted in browsers' Local Storage.
 
